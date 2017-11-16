@@ -149,7 +149,8 @@
     <Compile Include="CtrlAction\ModelCtrlAction.cs" />
     <Compile Include="CtrlAction\PickModeCtrlAction.cs" />
     <Compile Include="CtrlAction\ViewPointCtrlAction.cs" />
-    <Compile Include="Domain\Configuration\ProjectJson.cs" />
+    <Compile Include="Domain\Json\LoginJson.cs" />
+    <Compile Include="Domain\Json\ProjectJson.cs" />
     <Compile Include="Domain\Project\Scenes.cs" />
     <Compile Include="Helper\DocumentViewerHelper.cs" />
     <Compile Include="Helper\HttpContentExtension.cs" />

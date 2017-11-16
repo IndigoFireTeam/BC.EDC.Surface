@@ -5,7 +5,7 @@ using System.Text;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using BcSoft.EDC.Surface.Domain;
-using BcSoft.EDC.Surface.Domain.Configuration;
+using BcSoft.EDC.Surface.Domain.Json;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
@@ -76,18 +76,18 @@ namespace BcSoft.EDC.Surface.Helper
         //}
 
 
-        async public Task<int> LoginForm(string url, string userName, string passWord)
+        async public Task<LoginJson> LoginForm(string url, string userName, string passWord)
         {
-            int state = 3;
             HttpContent postContent = new FormUrlEncodedContent(new Dictionary<string, string>()
 
             {
                 {"username",userName },
                 {"password" ,passWord}          
             });
-
-            
-
+            HttpResponseMessage response = await HttpClientService.PostAsync(url, postContent);
+            response.EnsureSuccessStatusCode();
+            string loginJson = response.Content.ReadAsStringAsync().Result;
+            LoginJson state = Helper.JsonHelpercs.Deserialize<LoginJson>(loginJson);
             return state;
         }
 

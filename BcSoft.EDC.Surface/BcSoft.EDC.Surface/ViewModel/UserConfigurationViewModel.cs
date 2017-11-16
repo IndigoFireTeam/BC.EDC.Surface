@@ -5,7 +5,7 @@ using System.Linq;
 using System.Management;
 using System.Text;
 using System.Windows;
-
+using BcSoft.EDC.Surface.Domain.Json;
 namespace BcSoft.EDC.Surface.ViewModel
 {
     public class UserConfigurationViewModel : DevExpress.Mvvm.ViewModelBase
@@ -92,7 +92,6 @@ namespace BcSoft.EDC.Surface.ViewModel
         
         #endregion
 
-
         #region 构造
         public UserConfigurationViewModel()
         {
@@ -102,7 +101,6 @@ namespace BcSoft.EDC.Surface.ViewModel
             ServerAddress = ApplicationContext.Instance.SystemConfig.ServerAddress;
         }
         #endregion
-
 
         #region 命令方法
         private void ActivateDeviceExcute()
@@ -120,12 +118,31 @@ namespace BcSoft.EDC.Surface.ViewModel
             if (!IsVaildCheck())
                 return;
 
+            Login();
 
-            
+
         }
         #endregion
 
         #region 私有方法
+
+        async private void Login()
+        {
+            string serverAddress = ApplicationContext.Instance.SystemConfig.ServerAddress;
+            if (string.IsNullOrEmpty(serverAddress))
+                return;
+            string url = serverAddress + @"/bimdata/login/";
+            LoginJson state = await Helper.HttpServer.CreateInstance().LoginForm(url, UserName, PassWord);
+            MessageBox.Show(state.msg);
+            if (state.status =="0")
+            {
+
+            }
+            else
+            {
+                
+            }
+        }
         private void InitDeviceCode()
         {
             string mac = "";
@@ -153,11 +170,11 @@ namespace BcSoft.EDC.Surface.ViewModel
 
         private bool IsVaildCheck()
         {
-            if (string.IsNullOrEmpty(DeviceState) || DeviceState != "已激活")
-            {
-                MessageBox.Show("请激活设备!");
-                return false;
-            }
+            //if (string.IsNullOrEmpty(DeviceState) || DeviceState != "已激活")
+            //{
+            //    MessageBox.Show("请激活设备!");
+            //    return false;
+            //}
 
             if (string.IsNullOrEmpty(UserName.Trim()))
             {

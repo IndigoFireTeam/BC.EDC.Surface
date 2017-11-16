@@ -1,5 +1,4 @@
-﻿using BcSoft.EDC.Surface.Domain.Configuration;
-using DevExpress.Mvvm;
+﻿using DevExpress.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BcSoft.EDC.Surface.Domain.Configuration
+namespace BcSoft.EDC.Surface.Domain.Json
 {
     public  class ProjectJson
     {

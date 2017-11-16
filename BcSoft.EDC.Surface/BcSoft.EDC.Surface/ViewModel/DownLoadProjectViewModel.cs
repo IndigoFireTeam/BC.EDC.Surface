@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-using BcSoft.EDC.Surface.Domain.Configuration;
+using BcSoft.EDC.Surface.Domain.Json;
 using BcSoft.EDC.Surface.Domain;
 using System.IO;
 using DevExpress.Mvvm;
