@@ -1,0 +1,14 @@
+﻿<dxwui:NavigationPage x:Class="BcSoft.EDC.Surface.View.UserConfigurationView"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                      xmlns:local="clr-namespace:BcSoft.EDC.Surface.View"
+                      xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui"
+                      xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+                      xmlns:viewmodel="clr-namespace:BcSoft.EDC.Surface.ViewModel"
+                      DataContext="{dxmvvm:ViewModelSource Type={x:Type viewmodel:UserConfigurationViewModel}}">
+    <Grid>
+        <Button Content="用户配置界面"/>
+    </Grid>
+</dxwui:NavigationPage>

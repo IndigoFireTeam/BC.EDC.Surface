@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="BcSoft.EDC.Surface.View.CruiseView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BcSoft.EDC.Surface.View"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:command="clr-namespace:BcSoft.EDC.Surface.Commands"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0">
+            <Border.Background>
+                <SolidColorBrush Color="Black" Opacity="0.8"/>
+            </Border.Background>
+            <TextBlock Text="巡游路径" 
+                       Style="{StaticResource ResourceKey=captionTextStyle}"/>
+        </Border>
+        <ListBox Grid.Row="1" ScrollViewer.PanningMode="Both"
+                 ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                 ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                 BorderThickness="0" ItemsSource="{Binding CruiseDatas}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal"
+                                Height="30" Background="Transparent">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <command:ExInvokeCommandAction Command="{Binding DataContext.PlayCruiseCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                                                               CommandParameter="{Binding .}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Image Style="{StaticResource ResourceKey=itemImageStyle}"
+                               Source="/BcSoft.EDC.Surface;component/Images/Play.png"
+                               Margin="10,0,0,0"/>
+                        <TextBlock Text="{Binding Cruise_Name}" TextTrimming="CharacterEllipsis"
+                                   Style="{StaticResource ResourceKey=itemTextStyle}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

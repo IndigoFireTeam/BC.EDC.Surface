@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="BcSoft.EDC.Surface.View.SceneView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BcSoft.EDC.Surface.View"
+             xmlns:viewmodel="clr-namespace:BcSoft.EDC.Surface.ViewModel"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:command="clr-namespace:BcSoft.EDC.Surface.Commands"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0">
+            <Border.Background>
+                <SolidColorBrush Color="Black" Opacity="0.8"/>
+            </Border.Background>
+            <TextBlock Text="场景树" 
+                       Style="{StaticResource ResourceKey=captionTextStyle}"/>
+        </Border>
+
+        <DockPanel Grid.Row="1">
+            <Expander IsExpanded="False" DockPanel.Dock="Top"
+                      Style="{DynamicResource ExpanderStyle}">
+                <Expander.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/BcSoft.EDC.Surface;component/Images/Display.png"
+                                   Style="{StaticResource ResourceKey=itemImageStyle}"/>
+                            <TextBlock Text="场景树" 
+                                       Style="{StaticResource ResourceKey=groupTextStyle}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Expander.HeaderTemplate>
+                <TreeView ItemsSource="{Binding CatalogDataTrees}" 
+                          ScrollViewer.PanningMode="Both" Style="{StaticResource ResourceKey=TreeViewStyle}"
+                          ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                            <StackPanel Orientation="Horizontal" 
+                                        Margin="10,0,0,0" Background="Transparent">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <command:ExInvokeCommandAction Command="{Binding DataContext.CatalogCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                                                                       CommandParameter="{Binding .}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Image Source="/BcSoft.EDC.Surface;component/Images/Display.png"
+                                       Style="{StaticResource ResourceKey=itemImageStyle}"/>
+                                <TextBlock Text="{Binding Name}"
+                                           Style="{StaticResource ResourceKey=itemTextStyle}"/>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </Expander>
+            <Expander IsExpanded="False"
+                      Style="{DynamicResource ExpanderStyle}">
+                <Expander.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/BcSoft.EDC.Surface;component/Images/Display.png"
+                                       Style="{StaticResource ResourceKey=itemImageStyle}"/>
+                                <TextBlock Text="隐藏项"
+                                           Style="{StaticResource ResourceKey=groupTextStyle}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </Expander.HeaderTemplate>
+                <TreeView ItemsSource="{Binding HideCatalogDatas}"
+                          ScrollViewer.PanningMode="Both" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                    <TreeView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                                <Image Source="/BcSoft.EDC.Surface;component/Images/Display.png"
+                                           Style="{StaticResource ResourceKey=itemImageStyle}"/>
+                                <TextBlock Text="{Binding Name}"
+                                               Style="{StaticResource ResourceKey=itemTextStyle}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </Expander>
+        </DockPanel>
+    </Grid>
+</UserControl>

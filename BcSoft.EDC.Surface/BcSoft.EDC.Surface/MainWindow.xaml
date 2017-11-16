@@ -1,0 +1,58 @@
+﻿<dx:DXWindow x:Class="BcSoft.EDC.Surface.MainWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dxdb="http://schemas.devexpress.com/winfx/2008/xaml/demobase"
+             xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui"
+             xmlns:dxnav="http://schemas.devexpress.com/winfx/2008/xaml/navigation"
+             xmlns:dxwuin="http://schemas.devexpress.com/winfx/2008/xaml/windowsui/navigation"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:converter="clr-namespace:BcSoft.EDC.Surface.Converter"
+             xmlns:local="clr-namespace:BcSoft.EDC.Surface"
+             xmlns:view="clr-namespace:BcSoft.EDC.Surface.View"
+             mc:Ignorable="d" ShowInTaskbar="False"
+             WindowStyle="None" WindowState="Maximized"
+             ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--导航区域-->
+        <dxnav:TileNavPane Grid.Row="0" 
+                           NavButtonsSource="{Binding Navigations}">
+            <dxnav:TileNavPane.NavButtonTemplate>
+                <DataTemplate>
+                    <dxnav:NavButton HorizontalAlignment="{Binding HorizontalAlignment}">
+                        <dxnav:NavButton.Template>
+                            <ControlTemplate TargetType="dxnav:NavButton">
+                                <dxnav:NavButton Content="{Binding Text}" 
+                                                 FontSize="26"
+                                                 FontWeight="Bold"
+                                                 Glyph="{Binding Glyph,Converter={StaticResource ResourceKey=imageConverter}}"
+                                                 Command="{Binding DataContext.NavigationCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
+                                                 CommandParameter="{Binding .}"/>
+                            </ControlTemplate>
+                        </dxnav:NavButton.Template>
+                    </dxnav:NavButton>
+                </DataTemplate>
+            </dxnav:TileNavPane.NavButtonTemplate>
+        </dxnav:TileNavPane>
+        <!--内容区域-->
+        <dxwui:NavigationFrame Grid.Row="1" AnimationType="SlideHorizontal">
+            <dxmvvm:Interaction.Triggers>
+                <dxmvvm:EventToCommand EventName="Loaded" Command="{Binding ViewLoadedCommand}" />
+            </dxmvvm:Interaction.Triggers>
+            <dxmvvm:Interaction.Behaviors>
+                <dxwuin:FrameNavigationService />
+            </dxmvvm:Interaction.Behaviors>
+        </dxwui:NavigationFrame>
+        <!--侧边栏区域-->
+        <view:SideFloatView Grid.Row="1" Background="Red"
+                            HorizontalAlignment="Right"/>
+    </Grid>
+</dx:DXWindow>

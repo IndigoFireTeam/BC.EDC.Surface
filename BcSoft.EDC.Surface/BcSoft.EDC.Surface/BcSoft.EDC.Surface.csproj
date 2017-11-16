@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{767F069D-B0C6-4093-9476-8E651C589D1D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BcSoft.EDC.Surface</RootNamespace>
+    <AssemblyName>BcSoft.EDC.Surface</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\运行环境\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\运行环境\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxBcUgOcxLib">
+      <HintPath>..\Libs\Engine\AxBcUgOcxLib.dll</HintPath>
+    </Reference>
+    <Reference Include="BcUgOcxLib">
+      <HintPath>..\Libs\Engine\BcUgOcxLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="DevExpress.Data.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress\DevExpress.Data.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress\DevExpress.Mvvm.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Controls.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress\DevExpress.Xpf.Controls.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress\DevExpress.Xpf.Core.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress\DevExpress.Xpf.Grid.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v15.2.Core, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress\DevExpress.Xpf.Grid.v15.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.LayoutControl.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress\DevExpress.Xpf.LayoutControl.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.NavBar.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress\DevExpress.Xpf.NavBar.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.RichEdit.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress\DevExpress.Xpf.RichEdit.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="EmitMapper">
+      <HintPath>..\Libs\EmitMapper\EmitMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\Libs\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MoonPdfLib">
+      <HintPath>..\Libs\MoonPdfLib\MoonPdfLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Libs\Newtonsoft.Json\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\Libs\Sqlite\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http">
+      <HintPath>..\Libs\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <HintPath>..\Libs\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ApplicationContext.cs" />
+    <Compile Include="Commands\ExCommandParameter.cs" />
+    <Compile Include="Commands\ExInvokeCommandAction.cs" />
+    <Compile Include="Controls\Exerciser.xaml.cs">
+      <DependentUpon>Exerciser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PopupEx.cs" />
+    <Compile Include="Controls\TreeViewList\Converters.cs" />
+    <Compile Include="Controls\TreeViewList\RowExpander.cs" />
+    <Compile Include="Controls\TreeViewList\TreeListView.cs" />
+    <Compile Include="Controls\TreeViewList\TreeListViewItem.cs" />
+    <Compile Include="Converter\FileTypeImageConverter.cs" />
+    <Compile Include="CtrlAction\CruiseCtrlAction.cs" />
+    <Compile Include="CtrlAction\DocumentCtrlAction.cs" />
+    <Compile Include="CtrlAction\FlyingCtrlAction.cs" />
+    <Compile Include="CtrlAction\ModelCtrlAction.cs" />
+    <Compile Include="CtrlAction\PickModeCtrlAction.cs" />
+    <Compile Include="CtrlAction\ViewPointCtrlAction.cs" />
+    <Compile Include="Domain\Configuration\ProjectJson.cs" />
+    <Compile Include="Domain\Project\Scenes.cs" />
+    <Compile Include="Helper\DocumentViewerHelper.cs" />
+    <Compile Include="Helper\HttpServer.cs" />
+    <Compile Include="Helper\JsonHelpercs.cs" />
+    <Compile Include="Helper\LogHelper.cs" />
+    <Compile Include="Helper\ViewerFactory.cs" />
+    <Compile Include="LoadFormView.xaml.cs">
+      <DependentUpon>LoadFormView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CruiseModel.cs" />
+    <Compile Include="Model\DocumentModel.cs" />
+    <Compile Include="Model\PropertyModel.cs" />
+    <Compile Include="Model\ViewPointModel.cs" />
+    <Compile Include="Helper\CompressHelper.cs" />
+    <Compile Include="Controls\ProjectDisplayContainer.cs" />
+    <Compile Include="Converter\ImageConverter.cs" />
+    <Compile Include="CtrlAction\AddProjectCtrlAction.cs" />
+    <Compile Include="CtrlAction\CtrlActionFactory.cs" />
+    <Compile Include="CtrlAction\ExitCtrlAction.cs" />
+    <Compile Include="CtrlAction\GoBackCtrlAction.cs" />
+    <Compile Include="CtrlAction\ICtrlAction.cs" />
+    <Compile Include="CtrlAction\SettingCtrlAction.cs" />
+    <Compile Include="Dapper\CommandDefinition.cs" />
+    <Compile Include="Dapper\CommandFlags.cs" />
+    <Compile Include="Dapper\CustomPropertyTypeMap.cs" />
+    <Compile Include="Dapper\DataTableHandler.cs" />
+    <Compile Include="Dapper\DbString.cs" />
+    <Compile Include="Dapper\DefaultTypeMap.cs" />
+    <Compile Include="Dapper\DynamicParameters.CachedOutputSetters.cs" />
+    <Compile Include="Dapper\DynamicParameters.cs" />
+    <Compile Include="Dapper\DynamicParameters.ParamInfo.cs" />
+    <Compile Include="Dapper\ExplicitConstructorAttribute.cs" />
+    <Compile Include="Dapper\FeatureSupport.cs" />
+    <Compile Include="Dapper\SimpleMemberMap.cs" />
+    <Compile Include="Dapper\SqlDataRecordHandler.cs" />
+    <Compile Include="Dapper\SqlDataRecordListTVPParameter.cs" />
+    <Compile Include="Dapper\SqlMapper.Async.cs" />
+    <Compile Include="Dapper\SqlMapper.CacheInfo.cs" />
+    <Compile Include="Dapper\SqlMapper.cs" />
+    <Compile Include="Dapper\SqlMapper.DapperRow.cs" />
+    <Compile Include="Dapper\SqlMapper.DapperRowMetaObject.cs" />
+    <Compile Include="Dapper\SqlMapper.DapperTable.cs" />
+    <Compile Include="Dapper\SqlMapper.DeserializerState.cs" />
+    <Compile Include="Dapper\SqlMapper.DontMap.cs" />
+    <Compile Include="Dapper\SqlMapper.GridReader.Async.cs" />
+    <Compile Include="Dapper\SqlMapper.GridReader.cs" />
+    <Compile Include="Dapper\SqlMapper.ICustomQueryParameter.cs" />
+    <Compile Include="Dapper\SqlMapper.IDataReader.cs" />
+    <Compile Include="Dapper\SqlMapper.Identity.cs" />
+    <Compile Include="Dapper\SqlMapper.IDynamicParameters.cs" />
+    <Compile Include="Dapper\SqlMapper.IMemberMap.cs" />
+    <Compile Include="Dapper\SqlMapper.IParameterCallbacks.cs" />
+    <Compile Include="Dapper\SqlMapper.IParameterLookup.cs" />
+    <Compile Include="Dapper\SqlMapper.ITypeHandler.cs" />
+    <Compile Include="Dapper\SqlMapper.ITypeMap.cs" />
+    <Compile Include="Dapper\SqlMapper.Link.cs" />
+    <Compile Include="Dapper\SqlMapper.LiteralToken.cs" />
+    <Compile Include="Dapper\SqlMapper.Settings.cs" />
+    <Compile Include="Dapper\SqlMapper.TypeDeserializerCache.cs" />
+    <Compile Include="Dapper\SqlMapper.TypeHandler.cs" />
+    <Compile Include="Dapper\SqlMapper.TypeHandlerCache.cs" />
+    <Compile Include="Dapper\TableValuedParameter.cs" />
+    <Compile Include="Dapper\TypeExtensions.cs" />
+    <Compile Include="Dapper\UdtTypeHandler.cs" />
+    <Compile Include="Dapper\WrappedDataReader.cs" />
+    <Compile Include="Dapper\WrappedReader.cs" />
+    <Compile Include="Dapper\XmlHandlers.cs" />
+    <Compile Include="Helper\DBHelper.cs" />
+    <Compile Include="Domain\Configuration\Config.cs" />
+    <Compile Include="Domain\Configuration\Project.cs" />
+    <Compile Include="Domain\Configuration\User.cs" />
+    <Compile Include="Domain\Project\Cruise.cs" />
+    <Compile Include="Domain\Project\Document.cs" />
+    <Compile Include="Domain\Project\CatalogTree.cs" />
+    <Compile Include="Domain\Project\ViewPoint.cs" />
+    <Compile Include="Helper\EngineHelper.cs" />
+    <Compile Include="Helper\MapperHelper.cs" />
+    <Compile Include="Helper\PathUtils.cs" />
+    <Compile Include="Helper\SideFloatHelper.cs" />
+    <Compile Include="Helper\StringExtension.cs" />
+    <Compile Include="Model\CatalogTreeModel.cs" />
+    <Compile Include="Model\ProjectInfoModel.cs" />
+    <Compile Include="Model\SceneModel.cs" />
+    <Compile Include="ViewModel\CruiseViewModel.cs" />
+    <Compile Include="ViewModel\DocumentViewModel.cs" />
+    <Compile Include="ViewModel\EngineViewModel.cs" />
+    <Compile Include="ViewModel\LoadProjectDataViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\OpenLocalProjectViewModel.cs" />
+    <Compile Include="ViewModel\ProjectViewModel.cs" />
+    <Compile Include="ViewModel\PropertyViewModel.cs" />
+    <Compile Include="ViewModel\SceneViewModel.cs" />
+    <Compile Include="ViewModel\SettingViewModel.cs" />
+    <Compile Include="ViewModel\UserConfigurationViewModel.cs" />
+    <Compile Include="ViewModel\ViewPointViewModel.cs" />
+    <Compile Include="View\ContractView.xaml.cs">
+      <DependentUpon>ContractView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CruiseView.xaml.cs">
+      <DependentUpon>CruiseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DocumentView.xaml.cs">
+      <DependentUpon>DocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DocumentViewer.xaml.cs">
+      <DependentUpon>DocumentViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DownLoadProjectView.xaml.cs">
+      <DependentUpon>DownLoadProjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EngineView.xaml.cs">
+      <DependentUpon>EngineView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoadProjectDataView.xaml.cs">
+      <DependentUpon>LoadProjectDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OpenLocalProjectView.xaml.cs">
+      <DependentUpon>OpenLocalProjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProjectView.xaml.cs">
+      <DependentUpon>ProjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PropertyView.xaml.cs">
+      <DependentUpon>PropertyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SceneView.xaml.cs">
+      <DependentUpon>SceneView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingView.xaml.cs">
+      <DependentUpon>SettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SideFloatView.xaml.cs">
+      <DependentUpon>SideFloatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UpdateInfoView.xaml.cs">
+      <DependentUpon>UpdateInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserConfigurationView.xaml.cs">
+      <DependentUpon>UserConfigurationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewPointView.xaml.cs">
+      <DependentUpon>ViewPointView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controls\Exerciser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadFormView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ContractView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CruiseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DocumentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DocumentViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DownLoadProjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EngineView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoadProjectDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OpenLocalProjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PropertyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SceneView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SideFloatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UpdateInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserConfigurationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewPointView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\UI\NavButtonModel.cs" />
+    <Compile Include="Model\UI\Navigation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Update_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Phone_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Users_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Display.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Hide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ViewPoint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Exerciser.png" />
+    <Resource Include="Images\ExerciserBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\UnExpander.png" />
+    <Resource Include="Images\Expander.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy ..\Libs\Sqlite\*.dll $(OutDir)
+copy ..\Libs\Engine\*.dll $(OutDir)
+copy ..\Libs\MoonPdfLib\*.dll $(OutDir)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
