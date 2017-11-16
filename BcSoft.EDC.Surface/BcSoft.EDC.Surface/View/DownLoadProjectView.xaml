@@ -4,21 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BcSoft.EDC.Surface.View"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:viewmodel="clr-namespace:BcSoft.EDC.Surface.ViewModel"
+             DataContext="{dxmvvm:ViewModelSource Type={x:Type viewmodel:DownLoadProjectViewModel}}"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="380">
     <Grid>
-        <DataGrid  ItemsSource="{Binding }" 
+        <DataGrid  ItemsSource="{Binding ProjectInfos}"  SelectedItem="{Binding SelectedProject,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                   CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="False"
                   CanUserDeleteRows="False" IsReadOnly="True"  
                   ScrollViewer.VerticalScrollBarVisibility="Auto" 
                   ScrollViewer.HorizontalScrollBarVisibility="Auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="工程名称" MinWidth="160" Width="Auto"/>
-                <DataGridTextColumn Header="时间" MinWidth="120" Width="Auto"/>
+                <DataGridTextColumn Header="工程名称" MinWidth="220" Width="Auto" Binding="{Binding Name}" />
                 <DataGridTemplateColumn Header="操作" Width="80">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Height="24" Content="下载" Width="60"/>
+                            <Button Height="24" Content="下载" Width="60" Command="{Binding DataContext.DownLoadProjectCommand,RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

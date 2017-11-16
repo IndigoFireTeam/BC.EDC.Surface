@@ -13,14 +13,8 @@ namespace BcSoft.EDC.Surface.CtrlAction
 
         public void Run(ViewModelBase parentViewModel)
         {
-            //View.LoadProjectDataView view = new View.LoadProjectDataView();
-            //view.ShowDialog();
-            //List<ProjectJson> projects = Helper.HttpServer.CreateInstance().GetProject();
-            //string serverAddress = ApplicationContext.Instance.SystemConfig.ServerAddress;
-            //if (string.IsNullOrEmpty(serverAddress))
-            //    return;
-            //string url = serverAddress + @"bimdata/getProjects/admin";
-            // System.Collections.ObjectModel.ObservableCollection<ProjectJson> projects =  Helper.HttpServer.CreateInstance().GetProjects(url);
+            View.LoadProjectDataView view = new View.LoadProjectDataView();
+            view.ShowDialog();   
         }
     }
 }

@@ -6,9 +6,65 @@
                       xmlns:local="clr-namespace:BcSoft.EDC.Surface.View"
                       xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui"
                       xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+                      xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
                       xmlns:viewmodel="clr-namespace:BcSoft.EDC.Surface.ViewModel"
                       DataContext="{dxmvvm:ViewModelSource Type={x:Type viewmodel:UserConfigurationViewModel}}">
     <Grid>
-        <Button Content="用户配置界面"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="产品信息" Margin="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="360"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="版  本:" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <TextBlock Text="硬件编号:" Grid.Row="1" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <TextBlock Text="服务器:" Grid.Row="2" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <TextBlock Text="状  态:" Grid.Row="3" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+
+                <TextBlock Text="1.0.0.0" Grid.Column="2" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Text="{Binding DeviceCode}"  Grid.Row="1" Grid.Column="2" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBox Text="{Binding ServerAddress,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="24" Width="360"  Grid.Row="2" Grid.Column="2" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Text="{Binding DeviceState}"  Grid.Row="3" Grid.Column="2" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <Button Content="激活"  Grid.Row="3" Grid.Column="2" FontSize="14" VerticalAlignment="Center" Height="24" Width="60" HorizontalAlignment="Right" Margin="0,0,10,0" Command="{Binding ActivateDeviceCommand}"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="账户信息" Grid.Row="2" Margin="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="360"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="用户名:" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14"/>
+                <TextBlock Text="密   码:"  Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" />
+                <TextBlock Text="状  态:"  Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" />
+
+                <TextBox Text="{Binding UserName}"  Width="360" Height="24" Grid.Row="1" Grid.Column="2" FontSize="14"/>
+                <TextBox Text="{Binding PassWord}" Width="360" Height="24" Grid.Row="2" Grid.Column="2" FontSize="14"/>
+                <Button Content="登录" Grid.Row="4" Grid.Column="2" Width="60" Height="24" HorizontalAlignment="Right" Margin="0,0,10,0"  Command="{Binding LoginUserCommand}"/>
+                <TextBlock Text="{Binding LoginState,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14" />
+               
+                
+            </Grid>
+        </GroupBox>
     </Grid>
 </dxwui:NavigationPage>

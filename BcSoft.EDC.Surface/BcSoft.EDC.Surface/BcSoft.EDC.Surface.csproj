@@ -101,6 +101,7 @@
       <HintPath>..\Libs\Sqlite\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Net.Http">
       <HintPath>..\Libs\System.Net.Http.dll</HintPath>
     </Reference>
@@ -151,13 +152,11 @@
     <Compile Include="Domain\Configuration\ProjectJson.cs" />
     <Compile Include="Domain\Project\Scenes.cs" />
     <Compile Include="Helper\DocumentViewerHelper.cs" />
+    <Compile Include="Helper\HttpContentExtension.cs" />
     <Compile Include="Helper\HttpServer.cs" />
     <Compile Include="Helper\JsonHelpercs.cs" />
     <Compile Include="Helper\LogHelper.cs" />
     <Compile Include="Helper\ViewerFactory.cs" />
-    <Compile Include="LoadFormView.xaml.cs">
-      <DependentUpon>LoadFormView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Model\CruiseModel.cs" />
     <Compile Include="Model\DocumentModel.cs" />
     <Compile Include="Model\PropertyModel.cs" />
@@ -234,6 +233,7 @@
     <Compile Include="Model\SceneModel.cs" />
     <Compile Include="ViewModel\CruiseViewModel.cs" />
     <Compile Include="ViewModel\DocumentViewModel.cs" />
+    <Compile Include="ViewModel\DownLoadProjectViewModel.cs" />
     <Compile Include="ViewModel\EngineViewModel.cs" />
     <Compile Include="ViewModel\LoadProjectDataViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
@@ -293,10 +293,6 @@
       <DependentUpon>ViewPointView.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\Exerciser.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LoadFormView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

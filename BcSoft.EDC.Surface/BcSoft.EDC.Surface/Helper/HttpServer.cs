@@ -9,7 +9,7 @@ using BcSoft.EDC.Surface.Domain.Configuration;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
-
+using System.IO;
 
 namespace BcSoft.EDC.Surface.Helper
 {
@@ -40,49 +40,61 @@ namespace BcSoft.EDC.Surface.Helper
             return m_HttpService;
         }
 
-        public ObservableCollection<ProjectJson> GetProject()
+        //public void GetProject()
+        //{
+        //    string serverAddress = ApplicationContext.Instance.SystemConfig.ServerAddress;
+        //    if (string.IsNullOrEmpty(serverAddress))
+        //        return ;
+        //    string url = serverAddress + @"bimdata/getProjects/admin";
+        //    HttpClientService.GetAsync(url).ContinueWith((requestTask) =>
+        //       {
+        //           HttpResponseMessage response = requestTask.Result;
+        //           response.EnsureSuccessStatusCode();
+        //           string projectJson = response.Content.ReadAsStringAsync().Result;
+        //           projectJson = projectJson.TrimStart('[');
+        //           projectJson = projectJson.TrimEnd(']');
+        //           string[] chars = { "}," };
+        //           string[] projectsArray = projectJson.Split(chars, StringSplitOptions.RemoveEmptyEntries);
+
+        //           foreach (string item in projectsArray)
+        //           {
+        //               string strProject = "";
+        //               if (item.Last() != '}')
+        //               {
+        //                   strProject = item + "}";
+        //               }
+        //               else
+        //               {
+        //                   strProject = item;
+        //               }
+
+        //               var project = Helper.JsonHelpercs.Deserialize<ProjectJson>(strProject);
+        //           }
+        //       }
+        //   );
+
+        //}
+
+
+        async public Task<int> LoginForm(string url, string userName, string passWord)
         {
-            ObservableCollection<ProjectJson> projects = new ObservableCollection<ProjectJson>();
-            string serverAddress = ApplicationContext.Instance.SystemConfig.ServerAddress;
-            if (string.IsNullOrEmpty(serverAddress))
-                return projects;
-            string url = serverAddress + @"bimdata/getProjects/admin";
-            HttpClientService.GetAsync(url).ContinueWith((requestTask) =>
-               {
-                   HttpResponseMessage response = requestTask.Result;
-                   response.EnsureSuccessStatusCode();
-                   string projectJson = response.Content.ReadAsStringAsync().Result;
-                   projectJson = projectJson.TrimStart('[');
-                   projectJson = projectJson.TrimEnd(']');
-                   string[] chars = { "}," };
-                   string[] projectsArray = projectJson.Split(chars, StringSplitOptions.RemoveEmptyEntries);
+            int state = 3;
+            HttpContent postContent = new FormUrlEncodedContent(new Dictionary<string, string>()
 
-                   foreach (string item in projectsArray)
-                   {
-                       string strProject = "";
-                       if (item.Last() != '}')
-                       {
-                           strProject = item + "}";
-                       }
-                       else
-                       {
-                           strProject = item;
-                       }
+            {
+                {"username",userName },
+                {"password" ,passWord}          
+            });
 
-                       var project = Helper.JsonHelpercs.Deserialize<ProjectJson>(strProject);
-                       projects.Add(project);
-                   }
-               }
-           );
+            
 
-            return projects;
+            return state;
         }
 
-
-        public async Task<ObservableCollection<ProjectJson>>GetProjects(string url)
+        async public Task<List<ProjectJson>> AsyncGetProjects(string url)
         {
-            ObservableCollection<ProjectJson> projects = new ObservableCollection<ProjectJson>();
-            HttpResponseMessage response = await  HttpClientService.GetAsync(url);
+            List<ProjectJson> projects = new List<ProjectJson>();
+            HttpResponseMessage response = await HttpClientService.GetAsync(url);
             response.EnsureSuccessStatusCode();
             string projectJson = response.Content.ReadAsStringAsync().Result;
             projectJson = projectJson.TrimStart('[');
@@ -106,5 +118,26 @@ namespace BcSoft.EDC.Surface.Helper
             }
             return projects;
         }
+
+        public void DownLoadFile(string url)
+        {
+            // 创建一个异步GET请求，当请求返回时继续处理  
+            HttpClientService.GetAsync(url).ContinueWith(
+                (requestTask) =>
+                {
+                    HttpResponseMessage response = requestTask.Result;
+
+                    // 确认响应成功，否则抛出异常  
+                    // response.EnsureSuccessStatusCode();  
+
+                    // 异步读取响应为字符串  
+                    response.Content.DownloadAsFileAsync(@"E:\pdata\054932ff-f6ac-475f-99e5-46f20cdf00ef.zip", true).ContinueWith(
+                        (readTask) => Console.WriteLine("文件下载完成！"));
+                });
+        }
+
+
+
+
     }
 }
